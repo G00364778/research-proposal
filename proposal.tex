@@ -148,9 +148,11 @@
 
 % Begin the document.  
 \begin{document}
-
   % Display the title in the standard way for the document class.
   \maketitle
+  \begin{center}
+  \includegraphics[width=200px]{img/gmit-logo.jpg}
+  \end{center}
 
   % Usually, the first item after the title is an abstract.
   % An abstract gives a short summary of the main contribution of the document.
@@ -186,9 +188,9 @@
   \section{Introduction}
     The fundamental temperature challenge faced is to achieve a very tight thermal
     gradient over a stack of semiconductor silicon wafers, across the stack and 
-    across the individual wafer surfaces of plus/minus 1.5 degrees during ramping 
-    up and steady state to a target temperature of anything from around 200 degrees 
-    C to 600 degrees C.
+    across the individual wafer surfaces of plus/minus 1.5 \degree C during ramping 
+    up and steady state to a target temperature of anything from around 200 \degree 
+    C to 600 \degree C.
 
     The challenge is compounded by the space constrains driven by the superconducting 
     magnet wrapped around the thermal process. Increasing the bore size of the oven 
@@ -208,9 +210,9 @@
     signiﬁcant inﬂuence on temperature performance once tuned.
 
     \begin{itemize}
-      \item Multiple target temperatures between 200-600 degrees C per system.
-      \item Variance in thermal load of product wafers varying by wafer types and deposition 
-      and variance in batches. 
+      \item Multiple target temperatures between 200-600 \degree C per system.
+      \item Variance in thermal load of product wafers varying by wafer types and 
+      deposition and variance in batches. 
       \item Variance in thermal emissivity of diﬀerent products
       \item Variance in process chamber condition running in vacuum or various process 
       gasses like Helium, Nitrogen, Argon etc. 
@@ -226,63 +228,104 @@
 
   % Second section.
   \section{Literature}
-    The challenge 
-
-    The two articles that inspired the initial idea is a 
-    ~\cite{ArticleUnderwatervehicle}
+    The idea of using modelling to solve the long standing PID problem started with 
+    the first machine learning projects to demonstrate the functionality of neural networks.
     
+    The concept was further encouraged by the article describing a similar PID problem 
+    solved for tuning a variety of PID loops for underwater vehicles with constantly 
+    changing ballast and ocean conditions.~\cite{ArticleUnderwatervehicle}
+
+    Conceptually the idea for the theses is that given access to around 20 years 
+    worth of real time  thermal process information across a fleet of thermal 
+    processing tools, there should be enough data 
+    to build a neural network using all the variables listed previously and using 
+    existing control parameters with the potential addition of other potential 
+    unrecorded variables to improve the predictions, one should be able to create a 
+    neural network to model the three decoupled thermal PID control zones and underlying 
+    PID terms to compensate for variations dynamically as they occur.
+   
+    While this sound simple and straight forward, the challenging aspects for this
+    approach would be the big time lags in the PID control system and ﬁnding time based 
+    modelling methods to facilitate the solution. From doing some basic initial 
+    checks for literature and tools it seems feasible to achieve.
     ~\cite{InprocDecoupledPIDNeeuralNet}
 
-    It's important to refer to the existing literature in your proposal. In a
-    research proposal I would expect to see at least three or four references
-    directly related to the proposal. The next sentence includes a reference.
+    Although the application is slightly different the decoupling concept of PID 
+    zones is very similar and the concepts should translate. 
+    
+    To elaborate on the thermal challenge~\cite{LargeWaferThermalBahaviour}, thinking 
+    about a stack of twenty ﬁve, 200mm or 300mm silicon wafers, spaced a few 
+    millimeters apart, pretty much 
+    looks like a solid mass to a thermal process and there is a direct correlation 
+    of the thermal gradient to the speed of thermal increase, in other words the 
+    speed at with the target set-point is driven.~\cite{WaferThermalUniformity} 
+    The thermal gradient is reduced by 
+    introducing a ramp rate on the target temperature set-point and is typically achieved 
+    over the course of an hour or more, so modelling techniques will have to consider 
+    time delay compensation and this will be the challenging part of the project as 
+    far as I can determine.~\cite{InprocDecoupledPIDNeeuralNet}
+ 
+
+    % It's important to refer to the existing literature in your proposal. In a
+    % research proposal I would expect to see at least three or four references
+    % directly related to the proposal. The next sentence includes a reference.
     % References can be inserted using the \cite{} command with the item's
     % bibtex name in the curly braces. This will insert the reference indicator
     % where the \cite command is called and also ensure the reference title,
     % authors, etc in the list of references. The ~ controls the amount of
     % whitespace around the reference, try Googling "latex reference tilde".
-    ELIZA is a program written by Joseph Wiesenbaum. It was proposed in his 1966
-    paper~\cite{weisenbaumeliza}.
-    Wiesenbaum also wrote a book~\cite{weisenbaumcomputerpower}.
-    He passed away in 2008~\cite{weisenbaumnytobituary}.
     % We can give most high-level items a label with the \label command.
+    
     % We'll come back to that in a minute.
     \label{section:literature}
-    Typically, a research proposal will give a bit of background, listing four
-    or five directly relevant peer-reviewed publications.
+    % Typically, a research proposal will give a bit of background, listing four
+    % or five directly relevant peer-reviewed publications.
 
   % Another section.
   \section{Research question}
-    All research starts out with an idea. There is no shortage of interesting 
-    ideas. An idea needs to be developed into a research question to have a
-    reasonable chance of leading to a successful thesis submission.
+    % All research starts out with an idea. There is no shortage of interesting 
+    % ideas. An idea needs to be developed into a research question to have a
+    % reasonable chance of leading to a successful thesis submission.
     
-    A research question has a few essential characteristics. It should be clear 
-    and specific. It should be informed by the research work of others, as
-    described in peer reviewed publications, books, and other reliable sources.
-    It should lend itself to an investigation of some sort, that either provides
-    evidence as to its answer or answers it outright. The investigation needs to
-    be reasonable to complete in the time frame of the proposed research project.
+    % A research question has a few essential characteristics. It should be clear 
+    % and specific. It should be informed by the research work of others, as
+    % described in peer reviewed publications, books, and other reliable sources.
+    % It should lend itself to an investigation of some sort, that either provides
+    % evidence as to its answer or answers it outright. The investigation needs to
+    % be reasonable to complete in the time frame of the proposed research project.
 
-    It can be difficult to formulate a research question that meets all those
-    characteristics. Research by its nature is tentative. It may seem impossible
-    to know ahead of time whether a given investigation could be completed in a
-    given time frame.
+    % It can be difficult to formulate a research question that meets all those
+    % characteristics. Research by its nature is tentative. It may seem impossible
+    % to know ahead of time whether a given investigation could be completed in a
+    % given time frame.
     
-    The purpose of a research proposal, however, is to demonstrate an
-    understanding of the what will be involved in carrying out your research
-    project. You will, in consultation with your supervisors, be able to adapt
-    your research topic, research question, deliverables, and milestones as the
-    project evolves.
+    % The purpose of a research proposal, however, is to demonstrate an
+    % understanding of the what will be involved in carrying out your research
+    % project. You will, in consultation with your supervisors, be able to adapt
+    % your research topic, research question, deliverables, and milestones as the
+    % project evolves.
 
-    Everything is geared towards helping you to succeed in submitting a
-    successful thesis.
+    % Everything is geared towards helping you to succeed in submitting a
+    % successful thesis.
 
+    The basic idea is to design and train a neural network to dynamically model
+    and predict appropriate PID sets for the variances in process conditions and 
+    adjust decoupling and the degree of interaction between the overlapping thermal 
+    control zones.
+
+    \begin{itemize}
+      \item Can we establish meaningful correlations between inputs and outputs
+      \item Can we find a time delayed solution for parameter predictions
+      \item Can we measure and sufficiently decouple control zones and determine
+            decoupling constants
+      \item Can we subsequently find a unified model that accurately predicts the PID sets
+      \item Can we get the model to feed the predictions dynamically to our PID controller
+    \end{itemize}
 
   % Another section.
   \section{Timeline}
-    This project will take two years to complete. The Gantt chart in Figure
-    \ref{figure:ganttchart} gives an overview of the timeline.
+    It is estimated that this project will take two years to complete. The Gantt 
+    chart in Figure \ref{figure:ganttchart} gives an overview of the expected timeline.
 
     
     \begin{figure}[H]
@@ -317,7 +360,7 @@
     % Here's a description list. Bulleted and numbered lists are similar.
     \begin{description}
       \item[Literature review:] this will be delivered at the end of month 3.
-      \item[Chatbot:] this will be delivered at the end of month 12.
+      \item[Sofware Model:] this will be delivered at the end of month 12.
       \item[Tests:] the tests will be completed at the end of month 15.
       \item[Thesis:] the thesis will be delivered at the end of month 24.
     \end{description}
@@ -327,103 +370,103 @@
   % add an appendix just to show off what LaTeX can do.
   
   % First, move to a new page.
-  \newpage
-  % Next tell LaTeX to start the appendices.
-  \appendixpage
-  \appendix
+  % \newpage
+  % % Next tell LaTeX to start the appendices.
+  % \appendixpage
+  % \appendix
 
-  % Now sections will be given letter identifiers rather than numbers.
-  \section{Math, images, code, and tables}
-    % Everything else remains the same.
-    \LaTeX{} contains many features for incorporating various visual elements.
+  % % Now sections will be given letter identifiers rather than numbers.
+  % \section{Math, images, code, and tables}
+  %   % Everything else remains the same.
+  %   \LaTeX{} contains many features for incorporating various visual elements.
     
-    \subsection{Math}
-      For instance, \LaTeX{} is great at rendering math.
-      $$ f:\mathbb{R} \rightarrow \mathbb{R}:x \rightarrow e^{x+1} $$
+  %   \subsection{Math}
+  %     For instance, \LaTeX{} is great at rendering math.
+  %     $$ f:\mathbb{R} \rightarrow \mathbb{R}:x \rightarrow e^{x+1} $$
 
 
-    \subsection{Plots}
-      You can create plots programmatically from within \LaTeX{} like in Figure 
-      \ref{plot:xsqfour}.
-      \begin{figure}[H]
-        \begin{center}
-          \begin{tikzpicture}
-            \begin{axis}[
-              xlabel=$x$,
-              ylabel={$f(x) = x^2 - x +4$}
-            ]
-            % use TeX as calculator:
-            \addplot {x^2 - x +4};
-            \end{axis}
-          \end{tikzpicture}
-        \end{center}
-        \caption{Great at plots.}
-        \label{plot:xsqfour}
-      \end{figure}
+  %   \subsection{Plots}
+  %     You can create plots programmatically from within \LaTeX{} like in Figure 
+  %     \ref{plot:xsqfour}.
+  %     \begin{figure}[H]
+  %       \begin{center}
+  %         \begin{tikzpicture}
+  %           \begin{axis}[
+  %             xlabel=$x$,
+  %             ylabel={$f(x) = x^2 - x +4$}
+  %           ]
+  %           % use TeX as calculator:
+  %           \addplot {x^2 - x +4};
+  %           \end{axis}
+  %         \end{tikzpicture}
+  %       \end{center}
+  %       \caption{Great at plots.}
+  %       \label{plot:xsqfour}
+  %     \end{figure}
 
-    \subsection{Images}
-      Latex can incorporate raster images like PNG's and JPG's, as in Figure
-      \ref{img:logo}.
-      \begin{figure}[H]
-        \begin{center}
-          \includegraphics[width=200px]{img/gmit-logo.jpg}
-        \end{center}
-        \caption{The GMIT logo.}
-        \label{img:logo}
-      \end{figure}
+  %   \subsection{Images}
+  %     Latex can incorporate raster images like PNG's and JPG's, as in Figure
+  %     \ref{img:logo}.
+  %     \begin{figure}[H]
+  %       \begin{center}
+  %         \includegraphics[width=200px]{img/gmit-logo.jpg}
+  %       \end{center}
+  %       \caption{The GMIT logo.}
+  %       \label{img:logo}
+  %     \end{figure}
     
-    \subsection{Mind maps}
-      The TikZ package is the main plotting library for \LaTeX{}.
-      It can create mind maps like in Figure \ref{mindmap}.
+  %   \subsection{Mind maps}
+  %     The TikZ package is the main plotting library for \LaTeX{}.
+  %     It can create mind maps like in Figure \ref{mindmap}.
 
-      \begin{figure}[H]
-        \begin{center}
-          \resizebox{0.8\textwidth}{!}{%
-            \begin{tikzpicture}
-              \path[mindmap,concept color=gmitgrey,text=white]
-                node[concept] {Computable}
-                [clockwise from=0]
-                child[concept color=gmitblue] {
-                  node[concept] {Recursive}
-                  [clockwise from=30]
-                  child {node[concept] {Decidable}}
-                  child {node[concept] {Not}}
-                }
-                child[concept color=gmitred] {node[concept] {Turing}}
-                child[concept color=gmitblue] {node[concept] {Reduction}}
-                child[concept color=gmitred] {
-                  node[concept] {Complexity}
-                  [clockwise from=210]
-                  child { node[concept] {P} }
-                  child { node[concept] {NP} }
-                };
-            \end{tikzpicture}
-          }
-        \end{center}
-        \caption{A mind map.}
-        \label{mindmap}
-      \end{figure}
+  %     \begin{figure}[H]
+  %       \begin{center}
+  %         \resizebox{0.8\textwidth}{!}{%
+  %           \begin{tikzpicture}
+  %             \path[mindmap,concept color=gmitgrey,text=white]
+  %               node[concept] {Computable}
+  %               [clockwise from=0]
+  %               child[concept color=gmitblue] {
+  %                 node[concept] {Recursive}
+  %                 [clockwise from=30]
+  %                 child {node[concept] {Decidable}}
+  %                 child {node[concept] {Not}}
+  %               }
+  %               child[concept color=gmitred] {node[concept] {Turing}}
+  %               child[concept color=gmitblue] {node[concept] {Reduction}}
+  %               child[concept color=gmitred] {
+  %                 node[concept] {Complexity}
+  %                 [clockwise from=210]
+  %                 child { node[concept] {P} }
+  %                 child { node[concept] {NP} }
+  %               };
+  %           \end{tikzpicture}
+  %         }
+  %       \end{center}
+  %       \caption{A mind map.}
+  %       \label{mindmap}
+  %     \end{figure}
 
-    \subsection{Automata}
-      It can also create automata like in Figure \ref{automaton}.
-      \begin{figure}[H]
-        \begin{center}
-          \begin{tikzpicture}[auto, on grid, node distance=2cm, initial text=, >=latex]
-            \node[state, initial]   (q_1)                {$q_1$}; 
-            \node[state]            (q_2) [right of=q_1] {$q_2$};
-            \node[state]            (q_3) [right of=q_2] {$q_3$}; 
-            \node[state, accepting] (q_4) [right of=q_3] {$q_4$};
-            \path[->] 
-              (q_1) edge [loop above] node {$0,1$}        ()
-                    edge []           node {$1$}          (q_2)
-              (q_2) edge []           node {$0,\epsilon$} (q_3)
-              (q_3) edge []           node {$1$}          (q_4)
-              (q_4) edge [loop above] node {$0,1$}        ();
-          \end{tikzpicture}
-        \end{center}
-        \caption{An automaton.}
-        \label{automaton}
-      \end{figure}
+  %   \subsection{Automata}
+  %     It can also create automata like in Figure \ref{automaton}.
+  %     \begin{figure}[H]
+  %       \begin{center}
+  %         \begin{tikzpicture}[auto, on grid, node distance=2cm, initial text=, >=latex]
+  %           \node[state, initial]   (q_1)                {$q_1$}; 
+  %           \node[state]            (q_2) [right of=q_1] {$q_2$};
+  %           \node[state]            (q_3) [right of=q_2] {$q_3$}; 
+  %           \node[state, accepting] (q_4) [right of=q_3] {$q_4$};
+  %           \path[->] 
+  %             (q_1) edge [loop above] node {$0,1$}        ()
+  %                   edge []           node {$1$}          (q_2)
+  %             (q_2) edge []           node {$0,\epsilon$} (q_3)
+  %             (q_3) edge []           node {$1$}          (q_4)
+  %             (q_4) edge [loop above] node {$0,1$}        ();
+  %         \end{tikzpicture}
+  %       \end{center}
+  %       \caption{An automaton.}
+  %       \label{automaton}
+  %     \end{figure}
 
 
 
