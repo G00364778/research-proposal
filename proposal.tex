@@ -137,8 +137,8 @@
 \setminted{frame=lines, framesep=2mm, baselinestretch=1.2, linenos}
 
 % The title.
-\title{Research proposal: \\ Improving ELIZA using regular expressions}
-\author{Ian McLoughlin (ian.mcloughlin@gmit.ie)}
+\title{Research proposal: \\ Multi-zone Thermal PID modelling using Neural networks}
+\author{Gerhard van der Linde (G00364778@gmit.ie)}
 \date{\today}
 
 % Everything above the below \begin{document} command is referred to as the
@@ -155,16 +155,25 @@
   % Usually, the first item after the title is an abstract.
   % An abstract gives a short summary of the main contribution of the document.
   \begin{abstract}
-    We propose to research and develop an improvement to Joseph Weisenbaum's
-    ELIZA program. The ELIZA program simulates a psychiatrist's questions and
-    responses to a patient. The user of the program is the patient in the
-    simulation. The program was designed to demonstrate some of the
-    superficiality of human conversation. The original program used
-    reflective text-based substitutions. Carefully crafted user inputs
-    easily demonstrate that they were talking to a simulation rather than a
-    person. We are proposing to use regular expressions to further enhance the
-    program, making it somewhat more difficult to demonstrate it is a
-    simulation.
+    We propose to research and develop and improvement a three-zone neural
+    network to model and predict the PID parameters of temperature controller. 
+    The model will adjust the various PID terms based on the variances in the 
+    process conditions like target temperature, thermal ramp rate, thermal load, 
+    chamber pressure, process gas type and other external factors with a 
+    potential influence on the chamber thermal performance.
+
+    The purpose of the modelling is to provide a single solution capable of 
+    achieving multiple target temperatures with a tight distribution of 
+    temperatures across a stack of silicon wafers and across the wafer 
+    surfaces withing the target deviation specification during the three stages 
+    of the thermal cycle, i.e. heating, steady state and cool down.   
+    
+    The software program will create a model from existing thermal profiles and 
+    recorded process variables and attempt to construct a time based neural network 
+    model that can predict and transmit the PID terms to use given a predetermined 
+    set of process requirements and a real time measured set of environment variables
+    with a potential impact on the process performance.
+
   \end{abstract}
 
   % We generally organise our document then in sections. A section is the
@@ -175,17 +184,55 @@
   % the same effect. The former is generally preferred as it's cleaner and LaTeX
   % can generally figure out where the section ends.
   \section{Introduction}
-    The introduction generally overlaps with the abstract but expands
-    on the ideas. Here, I would discuss the overall proposal and put a context
-    around it.
+    The fundamental temperature challenge faced is to achieve a very tight thermal
+    gradient over a stack of semiconductor silicon wafers, across the stack and 
+    across the individual wafer surfaces of plus/minus 1.5 degrees during ramping 
+    up and steady state to a target temperature of anything from around 200 degrees 
+    C to 600 degrees C.
+
+    The challenge is compounded by the space constrains driven by the superconducting 
+    magnet wrapped around the thermal process. Increasing the bore size of the oven 
+    to facilitate a batch oven running a thermal process inside a magnet, exponentially 
+    increase the size, weight and cost of the superconducting magnet system.
+  
+    The optimal thermal solution is to run a multi-zone element with multi zone PID 
+    controls to balance the thermal load on the wafer stack, however other external 
+    factors inﬂuences the thermal behavior and interaction of zones.
+  
+    The three zone controller approach also creates PID challenges as thermal zones 
+    interact, so PID tuning is quote tedious and time consuming. Tuning multiple 
+    target temperatures for a system can take weeks to hit the speciﬁcations for all 
+    target temperature simultaneously.
+  
+    The challenge is compounded further by other external factors that also have a 
+    signiﬁcant inﬂuence on temperature performance once tuned.
+
+    \begin{itemize}
+      \item Multiple target temperatures between 200-600 degrees C per system.
+      \item Variance in thermal load of product wafers varying by wafer types and deposition 
+      and variance in batches. 
+      \item Variance in thermal emissivity of diﬀerent products
+      \item Variance in process chamber condition running in vacuum or various process 
+      gasses like Helium, Nitrogen, Argon etc. 
+      \item Other external factors that have potential inﬂuence on the processes, 
+      like temperatures of cooling water loops, room temperatures, atmospheric conditions 
+      like moisture, starting temperature of thermal job, for example the time duration 
+      started after previous job.
+    \end{itemize}
+
     
-    You can start a new paragraph by leaving a blank line. This is a new
-    paragraph.
     The introduction should also give a short overview of the rest of the
     document -- a one or two sentence overview of each part of the document.
 
   % Second section.
   \section{Literature}
+    The challenge 
+
+    The two articles that inspired the initial idea is a 
+    ~\cite{ArticleUnderwatervehicle}
+    
+    ~\cite{InprocDecoupledPIDNeeuralNet}
+
     It's important to refer to the existing literature in your proposal. In a
     research proposal I would expect to see at least three or four references
     directly related to the proposal. The next sentence includes a reference.
